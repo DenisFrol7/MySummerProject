@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New game</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/game}" th:object="${game}">
+    <label for="name">Название игры: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br/>
+    <label for="status">Статус: </label>
+    <input type="text" th:field="*{status}" id="status"/>
+    <br/>
+    <label for="genre">Жанр: </label>
+    <input type="text" th:field="*{genre}" id="genre"/>
+    <br/>
+    <label for="platform">Платформa: </label>
+    <input type="text" th:field="*{platform}" id="platform"/>
+    <br/>
+    <label for="release">Дату выхода: </label>
+    <input type="text" th:field="*{release}" id="release"/>
+    <br/>
+    <input type="submit" value="Добавить игру"/>
+</form>
+
+</body>
+</html>

@@ -15,4 +15,8 @@ public class GameService {
     public List<Game> gameList() {
         return gameRepository.findAll();
     }
+
+    public void saveGame(Game game) {
+        gameRepository.save(game);
+    }
 }
