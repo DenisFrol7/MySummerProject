@@ -5,10 +5,7 @@ import com.example.mysummerproject.services.GameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,6 +19,12 @@ public class GameController {
         return "game/games";
     }
 
+    @GetMapping("/{id}")
+    public String show(Model model, @PathVariable("id") long id) {
+        model.addAttribute("game", gameService.show(id));
+        return "game/show";
+    }
+
     @GetMapping("/new")
     public String newGame(@ModelAttribute("game") Game game) {
         return "game/new";
@@ -30,6 +33,24 @@ public class GameController {
     @PostMapping
     public String create(@ModelAttribute("game") Game game) {
         gameService.saveGame(game);
+        return "redirect:/game";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable("id") long id) {
+        model.addAttribute("game", gameService.show(id));
+        return "game/edit";
+    }
+
+    @PatchMapping("/{id}")
+    public String update(@ModelAttribute("game") Game game) {
+        gameService.update(game);
+        return "redirect:/game";
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") long id) {
+        gameService.delete(id);
         return "redirect:/game";
     }
 }

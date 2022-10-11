@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -19,5 +20,16 @@ public class Game {
     private String status;
     private String genre;
     private String platform;
-    private String release;
+    private LocalDate release;
+    private LocalDate playDate;
+    private String library;
+    private Integer achievementsUnlock;
+    private Integer achievementsCount;
+    private Integer gameScore;
+    private Integer gameScoreCount;
+
+    public int progress() {
+        double d = (double)achievementsUnlock/achievementsCount;
+        return (int) (d * 100);
+    }
 }

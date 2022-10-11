@@ -2,13 +2,13 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New game</title>
+    <title>Edit</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
 <header th:insert="blocks/header.html :: header"></header>
 <div class="container">
-    <form class="row g-2" th:method="POST" th:action="@{/game}" th:object="${game}">
+    <form class="row g-2" th:method="PATCH" th:action="@{/game/{id}(id=${game.getId()})}" th:object="${game}">
         <div class="col-12">
             <label for="name" class="col-label">Название игры: </label>
             <input type="text" class="form-control" th:field="*{name}" id="name"/>
@@ -69,14 +69,14 @@
             </label>
         </div>
         <div class="col-md-6">
-                <label for="release" class="form-label">Дата выхода: </label>
-                <input type="text" class="form-control" aria-describedby="dateHelpInline" th:field="*{release}" id="release"/>
-                <span id="dateHelpInline" class="form-text">дата в формате: dd-mm-yyyy</span>
+            <label for="release" class="form-label">Дата выхода: </label>
+            <input type="text" class="form-control" aria-describedby="dateHelpInline" th:field="*{release}" id="release"/>
+            <span id="dateHelpInline" class="form-text">дата в формате: dd-mm-yyyy</span>
         </div>
         <div class="col-md-6">
-                <label for="play_date" class="form-label">Прошёл игру: </label>
-                <input type="text" class="form-control" aria-describedby="playDateHelpInline" th:field="*{playDate}" id="play_date"/>
-                <span id="playDateHelpInline" class="form-text">дата в формате: dd-mm-yyyy</span>
+            <label for="play_date" class="form-label">Прошёл игру: </label>
+            <input type="text" class="form-control" aria-describedby="playDateHelpInline" th:field="*{playDate}" id="play_date"/>
+            <span id="playDateHelpInline" class="form-text">дата в формате: dd-mm-yyyy</span>
         </div>
         <div class="col-3">
             <label for="achievements_unlock" class="form-label">Разблокировано достижений: </label>
@@ -95,7 +95,7 @@
             <input type="text" class="form-control" th:field="*{gameScoreCount}" id="game_score_count"/>
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Добавить игру</button>
+            <button type="submit" class="btn btn-primary">Изменить</button>
         </div>
     </form>
 </div>

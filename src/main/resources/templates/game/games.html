@@ -1,28 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Games</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
 </head>
 <body>
-<h1>Game</h1>
-<br/>
-<table th:border="1">
-    <tr>
-        <th>Name</th>
-        <th>Status</th>
-        <th>Genre</th>
-        <th>Platform</th>
-        <th>Release</th>
-    </tr>
-    <tr th:each="game: ${games}">
-        <td th:text="${game.getName()}">name</td>
-        <td th:text="${game.getStatus()}">status</td>
-        <td th:text="${game.getGenre()}">genre</td>
-        <td th:text="${game.getPlatform()}">platform</td>
-        <td th:text="${game.getRelease()}">release</td>
-    </tr>
-</table>
-
+<header th:insert="blocks/header.html :: header"></header>
+<div class="container">
+    <table class="table table-borderless">
+        <caption>Коллекция игр</caption>
+        <thead>
+        <tr>
+            <th>Название</th>
+            <th>Жанр</th>
+            <th>Платформа</th>
+            <th>Библиотека</th>
+            <th>Статус</th>
+            <th>Прошёл игру</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="game: ${games}">
+            <td><a th:href="@{/game/{id}(id=${game.getId()})}" th:text="${game.getName()}">name</a></td>
+            <td th:text="${game.getGenre()}">genre</td>
+            <td th:text="${game.getPlatform()}">platform</td>
+            <td th:text="${game.getLibrary()}">library</td>
+            <td th:text="${game.getStatus()}">status</td>
+            <td th:text="${game.getPlayDate()}">playDate</td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <hr/>
+    <a href="/game/new">Добавить игру</a>
+</div>
 </body>
 </html>
