@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row">
     <div class="col-3">
-        <img src="../pictures/covers/far%20cry%203.jpg" class="img-fluid" alt="cover">
+        <img th:src="@{../pictures/covers/{name}.jpg(name=${game.getName().toLowerCase()})}" class="img-fluid" alt="cover">
     </div>
     <div class="col-3">
         <span style="font-weight: bold">Название: </span><span th:text="${game.getName()}">value</span><br>
