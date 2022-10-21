@@ -9,28 +9,38 @@
 <header th:insert="blocks/header.html :: header"></header>
 <div class="container">
     <div class="row">
-    <div class="col-3">
-        <img th:src="@{../pictures/covers/{name}.jpg(name=${game.getName().toLowerCase()})}" class="img-fluid" alt="cover">
-    </div>
-    <div class="col-3">
-        <span style="font-weight: bold">Название: </span><span th:text="${game.getName()}">value</span><br>
-        <span style="font-weight: bold">Статус: </span><span th:text="${game.getStatus()}">value</span><br>
-        <span style="font-weight: bold">Жанр: </span><span th:text="${game.getGenre()}">value</span><br>
-        <span style="font-weight: bold">Платформа: </span><span th:text="${game.getPlatform()}">value</span><br>
-        <span style="font-weight: bold">Библиотека: </span><span th:text="${game.getLibrary()}">value</span><br>
-        <span style="font-weight: bold">Дата выхода: </span><span th:text="${game.getRelease()}">value</span><br>
-        <span style="font-weight: bold">Прошёл игру: </span><span th:text="${game.getPlayDate()}">value</span><br>
-        <span style="font-weight: bold">Достижения: </span><span th:text="${game.getAchievementsUnlock()}">value</span>
-        <span>/ </span><span th:text="${game.getAchievementsCount()}">value</span><br>
-        <span style="font-weight: bold">Очки: </span><span th:text="${game.getGameScore()}">value</span>
-        <span>/ </span><span th:text="${game.getGameScoreCount()}">value</span><br>
-        <span style="font-weight: bold">Прогресс достижений:</span>
-        <progress th:value="${game.progress()}" max="100"></progress><br>
-        <a th:href="@{/game/{id}/edit(id=${game.getId()})}">Редактировать</a><br><br>
-        <form th:method="DELETE" th:action="@{/game/{id}(id=${game.getId()})}">
-            <button type="submit" class="btn btn-primary">Удалить</button>
-        </form>
-    </div>
+        <div class="col-3">
+            <img th:src="@{../pictures/covers/{name}.jpg(name=${game.getName().toLowerCase()})}" class="img-fluid"
+                 alt="cover">
+        </div>
+        <div class="col-3">
+            <span class="fw-bold">Название: </span><span th:text="${game.getName()}">value</span><br>
+            <span class="fw-bold">Статус: </span><span th:text="${game.getStatus()}">value</span><br>
+            <span class="fw-bold">Жанр: </span><span th:text="${game.getGenre()}">value</span><br>
+            <span class="fw-bold">Платформа: </span><span th:text="${game.getPlatform()}">value</span><br>
+            <span class="fw-bold">Библиотека: </span><span th:text="${game.getLibrary()}">value</span><br>
+            <span class="fw-bold">Дата выхода: </span><span th:text="${game.getRelease()}">value</span><br>
+            <span class="fw-bold">Прошёл игру: </span><span th:text="${game.getPlayDate()}">value</span><br>
+            <span class="fw-bold">Достижения: </span><span th:text="${game.getAchievementsUnlock()}">value</span>
+            <span>/ </span><span th:text="${game.getAchievementsCount()}">value</span><br>
+            <span class="fw-bold">Очки: </span><span th:text="${game.getGameScore()}">value</span>
+            <span>/ </span><span th:text="${game.getGameScoreCount()}">value</span><br>
+            <span class="fw-bold">Прогресс достижений:</span><br>
+            <progress th:value="${game.progress()}" max="100"></progress>
+            <br>
+            <br>
+            <div class="d-flex">
+                <div class="p-2">
+                    <a class="btn btn-primary" th:href="@{/game/{id}/edit(id=${game.getId()})}"
+                       role="button">Редактировать</a>
+                </div>
+                <div class="p-2">
+                    <form th:method="DELETE" th:action="@{/game/{id}(id=${game.getId()})}">
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
