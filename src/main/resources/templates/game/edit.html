@@ -34,6 +34,8 @@
                     <option value="Fighting">Fighting</option>
                     <option value="JRPG">JPRG</option>
                     <option value="Platform">Platform</option>
+                    <option value="Point-and-click">Point-and-click</option>
+                    <option value="Quest">Quest</option>
                     <option value="Puzzle">Puzzle</option>
                     <option value="Racing">Racing</option>
                     <option value="Role-playing (RPG)">Role-playing (RPG)</option>
@@ -47,8 +49,7 @@
         </div>
         <div class="col-12">
             <label class="form-label"> Платформа:
-                <select class="form-select" th:field="*{platform}">
-                    <option value="">Выберете вариант</option>
+                <select class="form-select" th:field="*{platform}" multiple>
                     <option value="PC">PC</option>
                     <option value="Xbox 360">Xbox 360</option>
                 </select>
@@ -58,7 +59,7 @@
             <label class="form-label"> Библиотека:
                 <select class="form-select" th:field="*{library}" multiple>
                     <option value="Steam">Steam</option>
-                    <option value="Origin">Origin</option>
+                    <option value="EA">EA</option>
                     <option value="Epic Games">Epic Games</option>
                     <option value="Ubisoft Connect">Ubisoft Connect</option>
                     <option value="Xbox">Xbox</option>

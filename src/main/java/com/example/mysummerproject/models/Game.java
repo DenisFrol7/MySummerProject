@@ -29,7 +29,9 @@ public class Game {
     private Integer gameScoreCount;
 
     public int progress() {
-        double d = (double)achievementsUnlock/achievementsCount;
-        return (int) (d * 100);
+        if (achievementsCount != null) {
+            double d = (double) achievementsUnlock / achievementsCount;
+            return (int) (d * 100);
+        } else return 0;
     }
 }
