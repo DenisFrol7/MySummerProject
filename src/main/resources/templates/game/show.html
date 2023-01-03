@@ -13,7 +13,7 @@
             <img th:src="@{../pictures/covers/{name}.jpg(name=${game.getName().toLowerCase()})}" class="img-fluid"
                  alt="cover">
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <span class="fw-bold">Название: </span><span th:text="${game.getName()}">value</span><br>
             <span class="fw-bold">Статус: </span><span th:text="${game.getStatus()}">value</span><br>
             <span class="fw-bold">Жанр: </span><span th:text="${game.getGenre()}">value</span><br>
